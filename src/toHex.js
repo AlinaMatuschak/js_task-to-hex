@@ -20,7 +20,46 @@
  * @return {string}
  */
 function toHex(value) {
-  // write code here
+  if (value === 0) {
+    return '0';
+  };
+
+  let res = '';
+  const firstNumber = Math.floor(value / 16);
+
+  firstNumber < 10
+    ? res = firstNumber.toString()
+    : res = getHexLetter(firstNumber);
+
+  const secondNumber = value - (firstNumber * 16);
+
+  secondNumber < 10
+    ? res += secondNumber.toString()
+    : res += getHexLetter(secondNumber);
+
+  return res;
 }
+
+const getHexLetter = (num) => {
+  switch (num) {
+    case 10:
+      return 'a';
+
+    case 11:
+      return 'b';
+
+    case 12:
+      return 'c';
+
+    case 13:
+      return 'd';
+
+    case 14:
+      return 'e';
+
+    case 15:
+      return 'f';
+  }
+};
 
 module.exports = toHex;
